@@ -2,12 +2,12 @@ import Link from "next/link";
 import { SiteHeader } from "./components/SiteHeader";
 
 const sdks = [
-  [".NET", "dotnet add package iRoute.Sdk --prerelease", "dotnet"],
-  ["Node.js", "npm install @iroute/sdk", "node"],
-  ["Python", "pip install --pre iroute", "python"],
+  [".NET", "dotnet add package iRoute.Sdk --version 0.1.0-alpha.1", "dotnet"],
+  ["Node.js", "npm install @iroute/sdk@0.1.0-alpha.1", "node"],
+  ["Python", "pip install --pre iroute==0.1.0a1", "python"],
   ["Java", "dev.iroute:iroute-sdk:0.1.0-alpha.1", "java"],
-  ["PHP", "composer require iroute/sdk", "php"],
-  ["Rust", "cargo add iroute-sdk", "rust"],
+  ["PHP", "composer require iroute/sdk:0.1.0-alpha.1", "php"],
+  ["Rust", "cargo add iroute-sdk@0.1.0-alpha.1", "rust"],
 ] as const;
 
 export default function Home() {
@@ -56,7 +56,7 @@ curl --fail http://localhost:8080/health/ready`}</code></pre>
         </section>
 
         <section className="sdk-section" aria-labelledby="sdk-title">
-          <div><p className="section-number">03</p><h2 id="sdk-title">Use your language</h2></div>
+          <div><p className="section-number">03</p><h2 id="sdk-title">Six thin clients</h2></div>
           <div className="sdk-list">
             {sdks.map(([name, command, slug]) => (
               <Link href={`/docs/sdk/${slug}`} className="sdk-row" key={slug}>
@@ -64,6 +64,11 @@ curl --fail http://localhost:8080/health/ready`}</code></pre>
               </Link>
             ))}
           </div>
+          <p className="section-copy">
+            These are the public registry coordinates. Publication is being
+            bootstrapped registry by registry; every guide also contains a
+            source installation path that works before its registry release.
+          </p>
         </section>
 
         <section className="status" aria-labelledby="status-title">

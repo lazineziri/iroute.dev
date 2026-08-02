@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { isValidElement } from "react";
+import { posix } from "node:path";
 import { MermaidDiagram } from "../../components/MermaidDiagram";
 import { SiteHeader } from "../../components/SiteHeader";
 import { docs, getDoc } from "../../../lib/docs";
@@ -20,25 +21,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return doc ? { title: doc.title, description: `${doc.title} documentation for iRoute.` } : {};
 }
 
-function rewriteHref(href?: string): string {
+const sourceRoutes = new Map(docs.map(doc => [doc.sourcePath, `/docs/${doc.slug}`]));
+
+function rewriteHref(href: string | undefined, sourcePath: string): string {
   if (!href) return "#";
-  const direct: Record<string, string> = {
-    "compatibility.md": "/docs/compatibility",
-    "installation.md": "/docs/getting-started",
-    "operations.md": "/docs/operations",
-    "architecture.md": "/docs/architecture",
-    "releasing.md": "/docs/releasing",
-    "workstream-status.md": "/docs/roadmap",
-    "../sdks/node/README.md": "/docs/sdk/node",
-    "../sdks/python/README.md": "/docs/sdk/python",
-    "../sdks/java/README.md": "/docs/sdk/java",
-    "../sdks/php/README.md": "/docs/sdk/php",
-    "../sdks/rust/README.md": "/docs/sdk/rust",
-    "../src/iRoute.Sdk.DotNet/README.md": "/docs/sdk/dotnet",
-  };
-  if (direct[href]) return direct[href];
   if (href.startsWith("http") || href.startsWith("#") || href.startsWith("mailto:")) return href;
-  return `https://github.com/lazineziri/iRoute/blob/main/${href.replace(/^\.\//, "")}`;
+
+  const [, pathPart, suffix] = href.match(/^([^?#]*)(.*)$/) ?? [];
+  const target = posix.normalize(posix.join(posix.dirname(sourcePath), pathPart));
+  const route = sourceRoutes.get(target);
+  if (route) return `${route}${suffix}`;
+
+  const kind = posix.extname(target) ? "blob" : "tree";
+  return `https://github.com/lazineziri/iRoute/${kind}/main/${target}${suffix}`;
 }
 
 export default async function DocumentationPage({ params }: PageProps) {
@@ -74,7 +69,7 @@ export default async function DocumentationPage({ params }: PageProps) {
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
-                a: ({ href, children }) => <a href={rewriteHref(href)}>{children}</a>,
+                a: ({ href, children }) => <a href={rewriteHref(href, doc.sourcePath)}>{children}</a>,
                 pre: ({ children }) => {
                   if (isValidElement(children)) {
                     const props = children.props as { className?: string; children?: unknown };
