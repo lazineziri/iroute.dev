@@ -1,20 +1,27 @@
-import architecture from "../content/architecture.md?raw";
-import compatibility from "../content/compatibility.md?raw";
-import deployment from "../content/deployment.md?raw";
-import evaluation from "../content/evaluation.md?raw";
-import gettingStarted from "../content/getting-started.md?raw";
-import operations from "../content/operations.md?raw";
-import overview from "../content/overview.md?raw";
-import packages from "../content/packages.md?raw";
-import releasing from "../content/releasing.md?raw";
-import security from "../content/security.md?raw";
-import sdkIndex from "../content/sdk/index.md?raw";
-import dotnet from "../content/sdk/dotnet.md?raw";
-import java from "../content/sdk/java.md?raw";
-import node from "../content/sdk/node.md?raw";
-import php from "../content/sdk/php.md?raw";
-import python from "../content/sdk/python.md?raw";
-import rust from "../content/sdk/rust.md?raw";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+function content(path: string): string {
+  return readFileSync(join(process.cwd(), "content", path), "utf8");
+}
+
+const architecture = content("architecture.md");
+const compatibility = content("compatibility.md");
+const deployment = content("deployment.md");
+const evaluation = content("evaluation.md");
+const gettingStarted = content("getting-started.md");
+const operations = content("operations.md");
+const overview = content("overview.md");
+const packages = content("packages.md");
+const releasing = content("releasing.md");
+const security = content("security.md");
+const sdkIndex = content("sdk/index.md");
+const dotnet = content("sdk/dotnet.md");
+const java = content("sdk/java.md");
+const node = content("sdk/node.md");
+const php = content("sdk/php.md");
+const python = content("sdk/python.md");
+const rust = content("sdk/rust.md");
 
 export type Doc = {
   slug: string;

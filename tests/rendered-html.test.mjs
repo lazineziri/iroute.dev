@@ -1,15 +1,43 @@
 import assert from "node:assert/strict";
-import test from "node:test";
+import { spawn } from "node:child_process";
+import test, { after, before } from "node:test";
+
+const port = 31_000 + (process.pid % 1_000);
+const origin = `http://127.0.0.1:${port}`;
+let server;
+let serverOutput = "";
+
+before(async () => {
+  server = spawn(
+    process.platform === "win32" ? "npm.cmd" : "npm",
+    ["run", "start", "--", "--hostname", "127.0.0.1", "--port", String(port)],
+    { cwd: new URL("..", import.meta.url), stdio: ["ignore", "pipe", "pipe"] },
+  );
+  server.stdout.on("data", chunk => { serverOutput += chunk; });
+  server.stderr.on("data", chunk => { serverOutput += chunk; });
+
+  const deadline = Date.now() + 30_000;
+  while (Date.now() < deadline) {
+    if (server.exitCode !== null) {
+      throw new Error(`Next.js exited before it became ready:\n${serverOutput}`);
+    }
+    try {
+      const response = await fetch(origin);
+      if (response.ok) return;
+    } catch {
+      // The server has not bound its port yet.
+    }
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+  throw new Error(`Next.js did not become ready:\n${serverOutput}`);
+});
+
+after(() => {
+  server?.kill("SIGTERM");
+});
 
 async function render(path = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(
-    new Request(`http://localhost${path}`, { headers: { accept: "text/html" } }),
-    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
-    { waitUntil() {}, passThroughOnException() {} },
-  );
+  return fetch(`${origin}${path}`, { headers: { accept: "text/html" } });
 }
 
 test("renders the iRoute landing page", async () => {
