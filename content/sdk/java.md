@@ -10,13 +10,14 @@ remain server-side.
 
 ## Status and requirements
 
-- SDK version: `0.1.0-alpha.1`
+- SDK version: `0.1.0-alpha.2`
 - Java baseline: Java 25 LTS
 - Maven coordinates: `dev.iroute:iroute-sdk`
 - Runtime dependencies: JDK only
 
-Once published, the public alpha is installed from Maven Central as a
-prerelease artifact. The source installation below remains available.
+**Maven Central publication is planned, not yet available.** The build does not
+yet produce the signed source and javadoc artifacts Central requires. Install
+from source until it does; the API is identical either way.
 
 ## Start iRoute
 
@@ -28,13 +29,13 @@ The default API URL is `http://localhost:8080`. See the shared
 [SDK usage guide](../../docs/sdk-usage.md) for source-run and authentication
 options.
 
-## Install from Maven Central
+## Install from Maven Central (planned)
 
 ```xml
 <dependency>
   <groupId>dev.iroute</groupId>
   <artifactId>iroute-sdk</artifactId>
-  <version>0.1.0-alpha.1</version>
+  <version>0.1.0-alpha.2</version>
 </dependency>
 ```
 
@@ -52,7 +53,7 @@ Then add it to the application:
 <dependency>
   <groupId>dev.iroute</groupId>
   <artifactId>iroute-sdk</artifactId>
-  <version>0.1.0-alpha.1</version>
+  <version>0.1.0-alpha.2</version>
 </dependency>
 ```
 

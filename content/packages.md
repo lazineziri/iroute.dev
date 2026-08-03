@@ -7,17 +7,24 @@ an SDK does not install or start the runtime.
 
 ## Public coordinates
 
-| Language | Registry | Coordinate |
-|---|---|---|
-| .NET | NuGet | `iRoute.Sdk` |
-| Node.js | npm | `@iroute/sdk` |
-| Python | PyPI | `iroute` |
-| Java | Maven Central | `dev.iroute:iroute-sdk` |
-| PHP | Packagist | `iroute/sdk` |
-| Rust | crates.io | `iroute-sdk` |
+| Language | Registry | Coordinate | Status |
+|---|---|---|---|
+| .NET | NuGet | `iRoute.Sdk`, `iRoute.Contracts` | Published |
+| Node.js | npm | `@iroute-dev/sdk` | Published |
+| Python | PyPI | `iroute` | Published |
+| PHP | Packagist | `iroute/sdk` | Published |
+| Rust | crates.io | `iroute-sdk` | Published |
+| Java | Maven Central | `dev.iroute:iroute-sdk` | Planned |
 
-Exact-name registry lookups returned no published package on 2026-08-02. That
-is not a reservation: maintainers must claim every name before announcing it.
+`0.1.0-alpha.2` is published on npm, PyPI, NuGet, Packagist, and crates.io.
+
+Java is installed from source for now. Maven Central requires signed source and
+javadoc artifacts that the build does not yet produce; the namespace itself is
+verifiable through ownership of `iroute.dev`. The client API is identical to the
+published SDKs, so only the installation route differs.
+
+The Node.js client is published under `@iroute-dev` because the `@iroute` npm
+scope belongs to an unrelated account.
 
 ## Security model
 

@@ -64,7 +64,7 @@ export default async function DocumentationPage({ params }: PageProps) {
           ))}
         </nav>
         <main className="doc">
-          <p className="source-note">Version 0.1.0-alpha.1 · canonical source: iRoute repository</p>
+          <p className="source-note">Version 0.1.0-alpha.2 · canonical source: iRoute repository</p>
           <article>
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}

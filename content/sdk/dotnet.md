@@ -10,12 +10,12 @@ remain server-side.
 
 ## Status and requirements
 
-- SDK version: `0.1.0-alpha.1`
+- SDK version: `0.1.0-alpha.2`
 - Verified baseline: .NET 10 / C# 14
 - Package ID: `iRoute.Sdk`
 - License: Apache-2.0
 
-Once published, the public alpha is installed from NuGet as a prerelease
+The public alpha is published on NuGet as a prerelease
 package. The source installation below remains available.
 
 ## Start iRoute
@@ -33,7 +33,7 @@ options.
 ## Install from NuGet
 
 ```bash
-dotnet add package iRoute.Sdk --version 0.1.0-alpha.1
+dotnet add package iRoute.Sdk --version 0.1.0-alpha.2
 ```
 
 ## Install from source
@@ -51,7 +51,7 @@ dotnet pack ../iRoute/src/iRoute.Sdk.DotNet \
   --configuration Release \
   --output ../packages
 dotnet add MyApp.csproj package iRoute.Sdk \
-  --version 0.1.0-alpha.1 \
+  --version 0.1.0-alpha.2 \
   --source ../packages
 ```
 

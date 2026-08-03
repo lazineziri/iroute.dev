@@ -9,13 +9,13 @@ server-side.
 
 ## Status and requirements
 
-- SDK version: `0.1.0-alpha.1`
+- SDK version: `0.1.0-alpha.2`
 - Minimum PHP: `8.3`
 - Verified baseline: PHP `8.5`
 - Required extension: `ext-curl`
 - Composer package: `iroute/sdk`
 
-Once published, the public alpha is installed from Packagist through the
+The public alpha is published on Packagist and installed through the
 official PHP mirror. The source installation below remains available.
 
 ## Start iRoute
@@ -31,7 +31,7 @@ options.
 ## Install from Packagist
 
 ```bash
-composer require iroute/sdk:0.1.0-alpha.1
+composer require iroute/sdk:0.1.0-alpha.2
 ```
 
 ## Install from source

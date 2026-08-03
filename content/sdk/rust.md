@@ -10,14 +10,14 @@ server-side.
 
 ## Status and requirements
 
-- SDK version: `0.1.0-alpha.1`
+- SDK version: `0.1.0-alpha.2`
 - Rust baseline: `1.97.1`
 - Edition: 2024
 - Crate name: `iroute-sdk`
 - Runtime dependencies: none
 
-Once published, the public alpha is installed from crates.io as a prerelease
-crate. The source installation below remains available.
+The public alpha is published on crates.io. Cargo does not select prereleases
+automatically, so request the exact version. The source installation below remains available.
 
 ## Start iRoute
 
@@ -32,7 +32,7 @@ options.
 ## Install from crates.io
 
 ```bash
-cargo add iroute-sdk@0.1.0-alpha.1
+cargo add iroute-sdk@0.1.0-alpha.2
 ```
 
 ## Install from source

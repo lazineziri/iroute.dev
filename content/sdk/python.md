@@ -10,14 +10,14 @@ server-side.
 
 ## Status and requirements
 
-- SDK version: `0.1.0a1`
+- SDK version: `0.1.0a2`
 - Minimum Python: `3.12`
 - Verified baseline: Python `3.14`
 - Runtime dependencies: standard library only
 - Package name: `iroute`
 
-Once published, the public alpha is installed from PyPI as a prerelease
-package. The source installation below remains available.
+The public alpha is published on PyPI. Prereleases are not selected by default,
+so `--pre` or an exact version is required. The source installation below remains available.
 
 ## Start iRoute
 
@@ -32,7 +32,7 @@ options.
 ## Install from PyPI
 
 ```bash
-python -m pip install --pre iroute==0.1.0a1
+python -m pip install --pre iroute==0.1.0a2
 ```
 
 ## Install from source

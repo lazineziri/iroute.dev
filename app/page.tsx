@@ -2,12 +2,12 @@ import Link from "next/link";
 import { SiteHeader } from "./components/SiteHeader";
 
 const sdks = [
-  [".NET", "dotnet add package iRoute.Sdk --version 0.1.0-alpha.1", "dotnet"],
-  ["Node.js", "npm install @iroute/sdk@0.1.0-alpha.1", "node"],
-  ["Python", "pip install --pre iroute==0.1.0a1", "python"],
-  ["Java", "dev.iroute:iroute-sdk:0.1.0-alpha.1", "java"],
-  ["PHP", "composer require iroute/sdk:0.1.0-alpha.1", "php"],
-  ["Rust", "cargo add iroute-sdk@0.1.0-alpha.1", "rust"],
+  [".NET", "dotnet add package iRoute.Sdk --version 0.1.0-alpha.2", "dotnet"],
+  ["Node.js", "npm install @iroute-dev/sdk@0.1.0-alpha.2", "node"],
+  ["Python", "pip install --pre iroute==0.1.0a2", "python"],
+  ["Java", "install from source \u2014 Maven Central planned", "java"],
+  ["PHP", "composer require iroute/sdk:0.1.0-alpha.2", "php"],
+  ["Rust", "cargo add iroute-sdk@0.1.0-alpha.2", "rust"],
 ] as const;
 
 export default function Home() {
@@ -88,7 +88,7 @@ curl --fail http://localhost:8080/health/ready`}</code></pre>
           </div>
         </section>
       </main>
-      <footer><span>iRoute · Apache-2.0</span><span>0.1.0-alpha.1</span></footer>
+      <footer><span>iRoute · Apache-2.0</span><span>0.1.0-alpha.2</span></footer>
     </div>
   );
 }

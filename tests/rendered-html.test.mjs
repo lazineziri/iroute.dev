@@ -55,5 +55,5 @@ test("renders versioned documentation", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Node\.js SDK/);
-  assert.match(html, /@iroute\/sdk/);
+  assert.match(html, /@iroute-dev\/sdk/);
 });
